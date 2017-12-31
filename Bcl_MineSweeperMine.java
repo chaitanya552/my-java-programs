@@ -8,18 +8,42 @@ input is above
 output
 *2*
 232
-1*1*/
+1*1
+*/
+/*******************************************************************************
+
+ *  
+ *  Creates an MxN minesweeper game where each cell is a bomb with
+ *  probability p. Prints out the m-by-n game and the neighboring bomb
+ *  counts.
+ *
+ *  Sample execution:
+ *
+ *      
+ *      * . . . . . . . . * 
+ *      . . . . . . * . . . 
+ *      . . . . . . . . * * 
+ *      . . . * * * . . * . 
+ *      . . . * . . . . . . 
+ *
+ *      * 1 0 0 0 1 1 1 1 * 
+ *      1 1 0 0 0 1 * 2 3 3 
+ *      0 0 1 2 3 3 2 3 * * 
+ *      0 0 2 * * * 1 2 * 3 
+ *      0 0 2 * 4 2 1 1 1 1 
+ *
+ *
+ **************************************************************************
+ */
 //code should iterate through matrix and check for
-// *'s should remain where as dots should be replaced with number of mines surrounding it ( in 8 directios)
+// 's should remain where as dots should be replaced with number of mines surrounding it ( in 8 directios)
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public class Bcl_MineSweeperMine {
-	/**
-	 * Iterate through each line of input.
-	 */
+	
 	public static void main(String[] args) throws IOException {
 	
 		String line;
