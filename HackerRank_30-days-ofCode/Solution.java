@@ -89,7 +89,7 @@ class Student extends Person {
 			grade = "P";
 
 		} else if (avg >= 40 && avg < 55) {
-			grade = "A";
+			grade = "D";
 		}
 
 		else if (avg < 40) {
