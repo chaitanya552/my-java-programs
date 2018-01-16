@@ -1,4 +1,17 @@
+/* generics are for code re-use
+enerics parameterize type and allow you to use apply the same interface,
+class, or method using different data types while still restricting operations to that data type
+The letters below are commonly-used generic type parameters:
+
+E - Element
+K - Key
+V - Value
+N - Number
+T - Type (e.g.: data type)
+S,U,V, etc. These are second, third, and fourth types for when T is already in use.*/
+
 import java.util.Scanner;
+
 
 import java.util.*;
 
