@@ -1,3 +1,10 @@
+//input :hello world
+//output:olleh dlrow
+//inp:cat dog pig
+//out ideal:tac god gip
+//my op: gip god tac
+
+
 public class ReverseIndividualwords {
 
 	public static void main(String[] args) {
