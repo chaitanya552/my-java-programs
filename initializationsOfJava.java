@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -49,7 +50,7 @@ public class initializationsOfJava {
 		// or
 		String s2 = Integer.toString(num);
 		System.out.println("num converted to string: " + s1);
-
+  
 		String str2 = "2312";
 		int strToNum = Integer.parseInt(str2);
 		System.out.println("String is cnverted to num: " + strToNum);
@@ -69,6 +70,21 @@ public class initializationsOfJava {
 		System.out
 				.println("string |chaitanya| is converted to char array and first element is: "
 						+ s7_char[0]);
+		System.out.println();
+		int[] nums={1,2,3};
+		//converting integer array to a string
+		System.out.println("prints an nums integer array"+Arrays.toString(nums));
+		
+		System.out.println();
+		System.out.println("extending the nums array");
+		int[] extended = new int[nums.length + 1];
+		extended[0] = 9;
+
+		System.arraycopy(nums, 0, extended, 1, nums.length);
+		System.out.println("extended array"+Arrays.toString(extended));
+		// arraycopy(Object src, int srcPos, Object dest, int destPos, int
+		// length)
+		// here length is nmber of elements copied
 	}
 
 	// strungBuffer_Builder_substring()
@@ -140,7 +156,7 @@ public class initializationsOfJava {
 		System.out.println("scanning()");
 		Scanner dd = new Scanner(System.in);
 		System.out.println("Enter the start time 'hhmm'");
-		int idFile = dd.nextInt();
+		//int idFile = dd.nextInt();
 	}
 
 	// arrays
@@ -172,6 +188,10 @@ public class initializationsOfJava {
 		String operators[] = input.split("[0-9]+");
 		// prints only the numbers and it splits by + - /*
 		String operands[] = input.split("[+-/*]");
+		int arr[] ={1,1,1,2,2,3,4};
+		System.out.println(Arrays.toString(arr)+"array got converted to string but not perfect");
+		String str= Arrays.toString(arr).replaceAll("\\[|\\]|,|\\s", "");
+		System.out.println(str+ "  usiing regex we replaced [ , ] and extra spaces with empty");
 		System.out.println("operator is :" + operators[1]);
 		System.out.println("first operand is: " + operands[0]);
 	}
