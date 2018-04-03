@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -15,15 +19,49 @@ public class BfsPathWordLadder_minCost {
 		// mod check String[] arr =
 		// {"appse","appls","mppse","ppse","apply","appy","app","appl","aple","apl"};
 		// del check String[] arr = {"health","heath","heats","hents","hends"};
-		// anaagram String[] arr = { "appo", "app", "pp", "ppo", "ppoy", "appl" };
-		String[] arr={"team","mate","tea","mat","ate","aten"};
-		Set<String> wordList = new HashSet<String>(Arrays.asList(arr));
+		// anaagram String[] arr = { "appo", "app", "pp", "ppo", "ppoy", "appl"
+		// };
+		String[] arr = { "team", "mate", "tea", "mat", "ate", "aten" };
+		String csvFinal = "C:/Users/gkneerukonda/Desktop/DictionaryWordsAll.csv";
+		File file = new File(csvFinal);
+		String line = "";
+		Set<String> wordList = new HashSet<String>();
+		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+			// initializing the lists for taking the columns
+			while ((line = br.readLine()) != null) {
+				if(line.length()>=3)
+				{
+				wordList.add(line.trim());
+				}
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		/*wordList.add("heath");
+		wordList.add("heats");
+		wordList.add("hents");
+		wordList.add("hends");
+		wordList.add("hands");
+		wordList.add("heath");
+		wordList.add("healt");
+		wordList.add("halt");
+		wordList.add("hant");
+		wordList.add("hand");
+		wordList.add("hands");
+		wordList.add("hants");
+		wordList.add("hans");
+*/		
+		//System.out.println(wordList.size());
+		//System.out.println(wordList);
+	//	Set<String> wordList = new HashSet<String>(Arrays.asList(arr));
 
 		// System.out.println(findLadders("pop", "hit", wordList));
 		// System.out.println(findLadders("ap", "apple", wordList));
 		// System.out.println(findLadders("hands", "health", wordList));
-		//System.out.println(findLadders("ppoye", "app", wordList));
-		System.out.println(findLadders("aten", "tea", wordList));
+		// System.out.println(findLadders("ppoye", "app", wordList));
+		//System.out.println(findLadders("aten", "tea", wordList));
+		System.out.println(findLadders("gate", "team", wordList));
 	}
 
 	public static List<List<String>> findLadders(String endWord,
@@ -57,13 +95,13 @@ public class BfsPathWordLadder_minCost {
 
 			addNeighbours(queue, visited, unvisited, current);
 		}
-
+        
 		return result;
 	}
 
 	private static void addNeighbours(Queue<Node> queue, Set<String> visited,
 			Set<String> unvisited, Node current) {
-		System.out.println(current.val + " current");
+		//System.out.println(current.val + " current");
 		char[] chars = current.val.toCharArray();
 		// edit
 		for (int i = 0; i < chars.length; ++i) {
@@ -72,7 +110,7 @@ public class BfsPathWordLadder_minCost {
 				chars[i] = c;
 				String nbr = new String(chars);
 				if (unvisited.contains(nbr)) {
-					System.out.println("yes");
+					//System.out.println("yes");
 					queue.add(new Node(nbr, current, current.dist + 1));
 					visited.add(nbr);
 				}
@@ -82,7 +120,7 @@ public class BfsPathWordLadder_minCost {
 		// delete
 
 		String str = current.val;
-		System.out.println(str + " str");
+		//System.out.println(str + " str");
 		for (int i = 0; i < chars.length; i++) {
 			StringBuilder sb = new StringBuilder();
 			String left = str.substring(0, i);
@@ -90,9 +128,9 @@ public class BfsPathWordLadder_minCost {
 			sb.append(left);
 			sb.append(right);
 			String delWord = sb.toString();
-			System.out.println(delWord + " del");
+			//System.out.println(delWord + " del");
 			if (unvisited.contains(delWord)) {
-				System.out.println("no");
+				//System.out.println("no");
 				queue.add(new Node(delWord, current, current.dist + 1));
 				visited.add(delWord);
 			}
@@ -121,7 +159,7 @@ public class BfsPathWordLadder_minCost {
 				}
 				String addWord = sb.toString();
 				if (unvisited.contains(addWord)) {
-					System.out.println("no");
+					//System.out.println("no");
 					queue.add(new Node(addWord, current, current.dist + 1));
 					visited.add(addWord);
 				}
@@ -146,9 +184,9 @@ public class BfsPathWordLadder_minCost {
 					// System.out.println(tempList);
 					// System.out.println(currentString.charAt(i));
 					tempList.remove(Character.valueOf(currentString.charAt(i)));
-					System.out.println(tempList);
+				//System.out.println(tempList);
 					if (tempList.isEmpty() && currentString.length() == i + 1) {
-						System.out.println("anagram");
+						//System.out.println("anagram");
 
 						queue.add(new Node(currentString, current,
 								current.dist + 1));
@@ -163,6 +201,8 @@ public class BfsPathWordLadder_minCost {
 	private static void addPath(List<List<String>> result, Node current) {
 		List<String> path = new ArrayList<>(current.dist);
 		while (current != null) {
+			System.out.println(current.val);
+			System.out.println(current.dist);
 			path.add(current.val);
 			current = current.parent;
 		}
