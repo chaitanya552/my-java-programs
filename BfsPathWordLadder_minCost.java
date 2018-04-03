@@ -13,6 +13,20 @@ import java.util.Queue;
 import java.util.Scanner;
 import java.util.Set;
 
+/*
+ * Algorithm: 
+ * BFS will be optimal. Consider every word as a node in a tree. The begin word is the root. 
+ * Every word could possibly have pow(26, len(word)) derivatives. In other word, every tree node has up to 26^len(word) children.
+ * Keep building the tree by deriving new words until the current level of leaves contains the end word.
+ *  
+ * Date 03/04/2018
+ * @author Chaitanya Kumar Neerukonda
+ *
+ * Reference:
+ * Dictionary words are from this link ( added few more words manually which are given in the question) 
+ * https://www.ef.edu/english-resources/english-vocabulary/top-3000-words/
+ *
+ */
 public class BfsPathWordLadder_minCost {
 
 	public static void main(String[] args) {
@@ -47,19 +61,19 @@ public class BfsPathWordLadder_minCost {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		System.out.println(findLadders(beginWord, endWord, wordList, costs));
-		/*
-		 * Test Cases
-		System.out.println(findLadders("health", "hands", wordList, costs));
-		System.out.println(findLadders("team", "mate", wordList, costs));
-		System.out.println(findLadders("ophthalmology", "glasses", wordList,
-				costs));
-		System.out.println(findLadders("again", "age", wordList, costs));
-		System.out.println(findLadders("age", "again", wordList, costs));
-		*/
+		System.out.println(findPath(beginWord, endWord, wordList, costs));
+
+		// Test Cases
+		// System.out.println(findPath("health", "hands",wordList, costs));
+		// System.out.println(findPath("team", "mate",wordList, costs));
+		// System.out.println(findPath("ophthalmology","glasses", wordList,
+		// costs));
+		// System.out.println(findPath("again","age", wordList, costs));
+		// System.out.println(findPath("age","again", wordList, costs));
+
 	}
 
-	public static int findLadders(String beginWord, String endWord,
+	public static int findPath(String beginWord, String endWord,
 			Set<String> wordList, int[] costs) {
 		wordList.add(endWord);
 		Queue<Node> queue = new LinkedList<>();
@@ -92,7 +106,7 @@ public class BfsPathWordLadder_minCost {
 				level = current.dist;
 			}
 
-			addNeighbours(queue, visited, unvisited, current, costs);
+			addNodes(queue, visited, unvisited, current, costs);
 		}
 		// ******paths print for verifying System.out.println(result);*********
 		if (minCost == Integer.MAX_VALUE) {
@@ -102,7 +116,7 @@ public class BfsPathWordLadder_minCost {
 		return minCost;
 	}
 
-	private static void addNeighbours(Queue<Node> queue, Set<String> visited,
+	private static void addNodes(Queue<Node> queue, Set<String> visited,
 			Set<String> unvisited, Node current, int[] costs) {
 		int add = costs[0];
 		int del = costs[1];
@@ -110,7 +124,7 @@ public class BfsPathWordLadder_minCost {
 		int anagram = costs[3];
 
 		char[] chars = current.val.toCharArray();
-		// modify/change
+		// modify/change logic
 		for (int i = 0; i < chars.length; ++i) {
 			for (char c = 'a'; c <= 'z'; ++c) {
 				char tmp = chars[i];
@@ -124,7 +138,7 @@ public class BfsPathWordLadder_minCost {
 				chars[i] = tmp;
 			}
 		}
-		// delete
+		// delete logic
 
 		String str = current.val;
 
@@ -142,7 +156,7 @@ public class BfsPathWordLadder_minCost {
 				visited.add(delWord);
 			}
 		}
-		// add
+		// add logic
 		for (int i = 0; i < str.length() + 1; ++i) {
 			for (char c = 'a'; c <= 'z'; ++c) {
 
@@ -171,12 +185,11 @@ public class BfsPathWordLadder_minCost {
 				}
 			}
 		}
-		// anagrams
+		// anagrams logic
 		List<Character> charList = new ArrayList<Character>();
 		for (int i = 0; i < str.length(); i++) {
 			charList.add(chars[i]);
 		}
-		List check = new ArrayList();
 		Iterator<String> it = unvisited.iterator();
 		while (it.hasNext()) {
 
