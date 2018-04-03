@@ -110,7 +110,7 @@ public class transformWordBfsMinCost {
 					minCost = minDist;
 				}
 				// add this path to result and continue
-				addPath(result, current);
+				tracePath(result, current);
 				continue;
 			}
 			// optimized the code
@@ -130,7 +130,7 @@ public class transformWordBfsMinCost {
 		if (minCost == Integer.MAX_VALUE) {
 			minCost = -1;
 		}
-		// ******paths can be printed for verification and debugging
+		//paths can be printed for verification and debugging
 		System.out.println(result);
 		return minCost;
 	}
@@ -246,7 +246,7 @@ public class transformWordBfsMinCost {
 		}
 	}
 
-	private static void addPath(List<List<String>> result, Node current) {
+	private static void tracePath(List<List<String>> result, Node current) {
 		List<String> path = new ArrayList<>(current.dist);
 		// back tracking the path with the help of parent nodes till it finds
 		// root node
