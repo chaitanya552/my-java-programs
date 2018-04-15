@@ -1,3 +1,4 @@
+package trees;
 
 // A Java program to introduce Binary Tree
 public class BinaryTree

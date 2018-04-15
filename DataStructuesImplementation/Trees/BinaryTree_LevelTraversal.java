@@ -1,9 +1,10 @@
+package trees;
 // Recursive Java program for level order traversal of Binary Tree
  
 /* Class containing left and right child of current 
    node and key value*/
 
- class BinaryTree_LevelTraversal
+class BinaryTree_LevelTraversal
 {
     // Root of the Binary Tree
     Node root;
@@ -75,4 +76,12 @@
     }
     
 }
+/*class Node {
+	int data;
+	Node left, right;
 
+	public Node(int item) {
+		data = item;
+		left = right = null;
+	}
+}*/
