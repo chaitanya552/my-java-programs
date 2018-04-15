@@ -36,7 +36,7 @@ output
  **************************************************************************
  */
 //code should iterate through matrix and check for
-// 's should remain where as dots should be replaced with number of mines surrounding it ( in 8 directios)
+// *'s should remain where as dots should be replaced with number of mines surrounding it ( in 8 directios)
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;

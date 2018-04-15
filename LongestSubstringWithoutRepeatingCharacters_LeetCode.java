@@ -5,7 +5,7 @@ public class LongestSubstringWithoutRepeatingCharacters_LeetCode {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println(lengthOfLongestSubstring("abcdea"));
+		System.out.println(lengthOfLongestSubstring("adcbea"));
 	}
 
 	public static int lengthOfLongestSubstring(String s) {

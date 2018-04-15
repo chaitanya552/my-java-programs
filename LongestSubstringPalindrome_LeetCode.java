@@ -1,7 +1,8 @@
 /*
  * usng dynamic programming we can save palindromes of len 1, len 2 and go from there on 
  * results in O(n2)
- * The value of table[i][j] is true, if the substring is palindrome, otherwise false. 
+ * The value of table[i][j] is true, if the substring is palindrome, otherwise false.
+ * i and j included in substring .[1][3] of chaitu is hai  
  * To calculate table[i][j], we first check the value of table[i+1][j-1], 
  * if the value is true and str[i] is same as str[j], 
  * then we make table[i][j] true. Otherwise, the value of table[i][j] is made false.
@@ -29,7 +30,6 @@ public class LongestSubstringPalindrome_LeetCode {
 			if (s.charAt(i) == s.charAt(i + 1)) {
 				val[i][i + 1] = true;
 				maxLength = 2;
-				
 				start = i;
 			
 			}
@@ -66,3 +66,31 @@ public class LongestSubstringPalindrome_LeetCode {
 	}
 
 }
+
+
+//method 2 18 ms
+/*
+class Solution {
+private int maxLength = 0;
+private int index = 0;
+
+public String longestPalindrome(String s) {
+    for(int i = 0; i< s.length(); i++) {
+        extendPalindrome(s, i, i);
+        extendPalindrome(s, i, i+1); 
+    }
+
+    return s.substring(index, index+maxLength);
+}
+
+public void extendPalindrome(String s, int i, int j) {
+    while(i>=0 && j <= s.length()-1 && s.charAt(i) == s.charAt(j)) {
+        i--;
+        j++;
+    }
+    if(maxLength < j-i-1) {
+        maxLength = j-i-1;
+        index = i+1;
+    } 
+}
+*/

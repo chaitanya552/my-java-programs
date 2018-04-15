@@ -29,7 +29,6 @@ public class initializationsOfJava {
 		collections();
 
 	}
-
 	// int String char
 	public static void initializing_String_int_char() {
 		System.out.println();
@@ -131,7 +130,9 @@ public class initializationsOfJava {
 			FileReader fileReader = new FileReader(file);
 			BufferedReader br = new BufferedReader(fileReader);
 			StringBuffer buf = new StringBuffer();
-
+			//BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+			//BufferedReader br = new BufferedReader(new FileReader(file)))
+			//Scanner scan=new Scanner(System.in);
 			String line;
 			while ((line = br.readLine()) != null) {
 				// splits text by spaces
@@ -194,6 +195,11 @@ public class initializationsOfJava {
 		System.out.println(str+ "  usiing regex we replaced [ , ] and extra spaces with empty");
 		System.out.println("operator is :" + operators[1]);
 		System.out.println("first operand is: " + operands[0]);
+		 //The characters are ^  -  [  and two &s in a row(&&). In order to use one of these characters, we need to put \\ in front of the character:
+
+			 String expr = "2*x^3 - 4/5*y + z^2";
+			 String delims = "[+\\-*/\\^ ]+"; // so the delimiters are:  + - * / ^ space
+			 String[] tokens = expr.split(delims);
 	}
 
 	public static void collections() {
@@ -206,7 +212,16 @@ public class initializationsOfJava {
 		{
 		    System.out.println(entry.getKey() + " is repeated " + entry.getValue());
 		}
-		
+		ArrayList<ArrayList<String>> listOLists = new ArrayList<ArrayList<String>>();
+		//or
+		List<List<String>> listOListsNew = new ArrayList<>();
+		ArrayList<String> singleList = new ArrayList<String>();
+		//or
+		List<String> singleListNew = new ArrayList<>();
+		singleList.add("hello");
+		singleList.add("world");
+		listOLists.add(singleList);
+
 		//m1
 		java.util.Iterator<String> it = set.iterator();
 		 
