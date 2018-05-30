@@ -1,0 +1,121 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+import java.util.Set;
+
+public class WordLadderBFS_LeetCode {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String[] arr = { "hot", "hip", "hop", "pop", "dot", "kit", "kip","mip" };
+		List<String> wordList = new ArrayList<String>(Arrays.asList(arr));
+
+		int answer = ladderLength("hit", "pop", wordList);
+		System.out.println(answer);
+	}
+
+	public static int ladderLength(String beginWord, String endWord,
+			List<String> wordList) {
+		Set<String> dict = new HashSet<>(wordList);
+		Queue<String> queue = new LinkedList<>();
+		queue.add(beginWord);
+		//System.out.println("queue" + queue);
+		int level = 1;
+		while (!queue.isEmpty()) {
+			int size = queue.size();
+			for (int q = 0; q < size; q++) {
+				char[] cur = queue.poll().toCharArray();
+				String check= new String(cur);
+			//	System.out.println("poll/ current element in queue: "+check);
+				for (int i = 0; i < cur.length; i++) {
+					char tmp = cur[i];
+					for (char chr = 'a'; chr <= 'z'; chr++) {
+						cur[i] = chr;
+						String pathWord = new String(cur);
+						if (dict.contains(pathWord)) {
+							if (pathWord.equals(endWord))
+							{
+				//				System.out.println("path word is end word: "+ pathWord);
+								return level + 1;
+							}
+							//System.out.println("path word ->"+pathWord);
+							queue.add(pathWord);
+							//System.out.println("current queue"+ queue);
+							dict.remove(pathWord);
+							//System.out.println("current dictionay"+dict);
+						}
+					}
+					cur[i] = tmp;
+				}
+			}
+			level++;
+		}
+		return 0;
+	}
+}
+
+
+/*
+
+ * we are essentially building a graph, from start, BF.
+ * and at each level we find all reachable words from parent.
+ * we stop if the current level contains end,
+ * we return any path whose last node is end.
+ * 
+ * to achieve BFT, use a deuqe;
+ * a key improvement is to remove all the words we already reached
+ * in PREVIOUS LEVEL; we don't need to try visit them again
+ * in subsequent level, that is guaranteed to be non-optimal solution.
+ * at each new level, we will removeAll() words reached in previous level from dict.
+
+public List<List<String>> findLadders(String start, String end, Set<String> dict) {
+    List<List<String>> results = new ArrayList<List<String>>();
+    dict.add(end);
+    // instead of storing words we are at, we store the paths.
+    Deque<List<String>> paths = new LinkedList<List<String>>();
+    List<String> path0 = new LinkedList<String>();
+    path0.add(start);
+    paths.add(path0);
+    // if we found a path ending at 'end', we will set lastLevel,
+    // use this data to stop iterating further.
+    int level = 1, lastLevel = Integer.MAX_VALUE;
+    Set<String> wordsPerLevel = new HashSet<String>();
+    while (!paths.isEmpty()) {
+        List<String> path = paths.pollFirst();
+        if (path.size() > level) {
+            dict.removeAll(wordsPerLevel);
+            wordsPerLevel.clear();
+            level = path.size();
+            if (level > lastLevel)
+                break; // stop and return
+        }
+        //  try to find next word to reach, continuing from the path
+        String last = path.get(level - 1);
+        char[] chars = last.toCharArray();
+        for (int index = 0; index < last.length(); index++) {
+            char original = chars[index];
+            for (char c = 'a'; c <= 'z'; c++) {
+                chars[index] = c;
+                String next = new String(chars);
+                if (dict.contains(next)) {
+                    wordsPerLevel.add(next);
+                    List<String> nextPath = new LinkedList<String>(path);
+                    nextPath.add(next);
+                    if (next.equals(end)) {
+                        results.add(nextPath);
+                        lastLevel = level; // curr level is the last level
+                    } else
+                        paths.addLast(nextPath);
+                }
+            }
+            chars[index] = original;
+        }
+    }
+    
+    return results;
+}
+
+*/
