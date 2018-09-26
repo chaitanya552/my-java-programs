@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry excluding="HackerRank_30-days-ofCode/|DataStructuesImplementation/LinkedListFromScratch/|DataStructuesImplementation/" kind="src" path=""/>
+	<classpathentry excluding="LinkedListFromScratch/" kind="src" path="DataStructuesImplementation"/>
+	<classpathentry kind="src" path="DataStructuesImplementation/LinkedListFromScratch"/>
+	<classpathentry kind="src" path="HackerRank_30-days-ofCode"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
