@@ -1,0 +1,37 @@
+/*
+ * Example 1:
+
+Input: [7,1,5,3,6,4]
+Output: 5
+Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
+             Not 7-1 = 6, as selling price needs to be larger than buying price.
+ */
+public class BestTimetoBuyStock_LeetCode {
+
+	public static void main(String[] args) {
+		//int[] prices= {7,1,5,3,6,4};
+		int[] prices= {7,6,4,3,1};
+		System.out.println(maxProfit(prices));
+		
+	}
+	public static int maxProfit(int[] prices) {
+		int profitMax=0;
+		int profit=0;
+		for(int i=0;i< prices.length-1;i++)
+		{
+			for (int j=i+1;j< prices.length;j++)
+			{
+				if(prices[j]>prices[i])
+				{
+					System.out.println(i+","+j);
+					profit = prices[j]-prices[i];
+				}
+				if (profit>profitMax)
+				{
+					profitMax =profit;
+				}
+			}
+		}
+			return profitMax;
+    }
+}
