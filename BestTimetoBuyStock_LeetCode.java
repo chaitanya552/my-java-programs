@@ -14,6 +14,7 @@ public class BestTimetoBuyStock_LeetCode {
 		System.out.println(maxProfit(prices));
 		
 	}
+//O(n2)
 	public static int maxProfit(int[] prices) {
 		int profitMax=0;
 		int profit=0;
@@ -30,6 +31,23 @@ public class BestTimetoBuyStock_LeetCode {
 				{
 					profitMax =profit;
 				}
+			}
+		}
+			return profitMax;
+    }
+	//O(n)
+	public static int maxProfit2(int[] prices) {
+		int profitMax=0;
+		int minPrice= Integer.MAX_VALUE;
+		for(int i=0;i< prices.length;i++)
+		{
+			if(prices[i]<minPrice)
+			{
+				minPrice=prices[i];
+			}
+			else if (prices[i]-minPrice> profitMax)
+			{
+				profitMax=prices[i]- minPrice;
 			}
 		}
 			return profitMax;
