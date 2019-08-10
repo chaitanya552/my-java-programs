@@ -20,7 +20,7 @@ public class CalculatorProb {
 		// String str ="99+98";
 
 		List<String> tokens = tokensp(str);
-
+System.out.println(tokens);
 		calc(tokens);
 
 	}

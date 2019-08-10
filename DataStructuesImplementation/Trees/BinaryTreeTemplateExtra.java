@@ -1,4 +1,4 @@
-package trees;
+package Trees;
 /*package trees;
 
 class Node {

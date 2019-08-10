@@ -12,6 +12,7 @@ public class CountRepeatationsofAnElementInSortedArray {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
     int arr[]={1,1,2,5,5,5,6,7};
+    System.out.println(Arrays.toString(arr));
     //replaces all commas,[] in output array to string conversion
     String str= Arrays.toString(arr).replaceAll("\\[|\\]|,|\\s", "");
   

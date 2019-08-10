@@ -1,4 +1,4 @@
-package trees;
+package Trees;
 // Recursive Java program for level order traversal of Binary Tree
  
 /* Class containing left and right child of current 

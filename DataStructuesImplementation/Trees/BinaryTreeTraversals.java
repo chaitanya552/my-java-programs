@@ -1,4 +1,4 @@
-package trees;
+package Trees;
 
 //Java program for different tree traversals
 

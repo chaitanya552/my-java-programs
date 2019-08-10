@@ -1,4 +1,4 @@
-package tutorial1;
+
 // vidu assesment
 import java.io.*;
 public class ArrayPacking {

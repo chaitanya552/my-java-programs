@@ -1,4 +1,4 @@
-package trees;
+package Trees;
 
 public class maxDepthBinaryTree_LeetCode {
 	Node root;

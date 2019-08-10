@@ -1,4 +1,4 @@
-package trees;
+package Trees;
 
 public class HeightOfTree {
 	// Root of the Binary Tree

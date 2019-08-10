@@ -16,7 +16,7 @@ public class CountandSay_LeetCode {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println(countAndSay(5));
+		System.out.println(countAndSay(2));
 	}
 
 	public static String countAndSay(int n) {
@@ -32,17 +32,19 @@ public class CountandSay_LeetCode {
 		char c = s.charAt(0);
 		int count = 1;
 		for (int i = 1; i < s.length(); i++) {
-			//look at previous string and write number of times a digit is seen and the digit itself
+			// look at previous string and write number of times a digit is seen and the
+			// digit itself
 			if (s.charAt(i) == c) {
 				count++;
 			} else {
-				sb.append(count);//digit is seen
+				sb.append(count);// digit is seen
 				sb.append(c);// digit itself
 				c = s.charAt(i);
 				count = 1;
 			}
 		}
-		// this is for initial loop n mostly for the last condition where there are all 1's or 2's etc 
+		// this is for initial loop n mostly for the last condition where there are all
+		// 1's or 2's etc
 		// count incs in the if part but not appended
 		sb.append(count);
 		sb.append(c);
